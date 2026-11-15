@@ -40,9 +40,19 @@ AstrBot 的所有下载都汇聚到一个函数：`astrbot.core.zip_updater._Rep
 
 ## 安装
 
-### 方式一：插件市场
+### 方式一：从仓库地址安装（推荐）
 
-在 AstrBot 面板 → 插件市场里搜索 **下载加速器**，点安装即可。
+面板 → 插件管理 → 安装插件 → **从 URL / 仓库安装**，填：
+
+```
+https://github.com/shengbuding/astrbot_plugin_dl_accel
+```
+
+点安装即可。也可以直接用 Release 里的打包文件：
+
+```
+https://github.com/shengbuding/astrbot_plugin_dl_accel/releases/download/v1.0.0/astrbot_plugin_dl_accel.zip
+```
 
 ### 方式二：手动安装
 
@@ -53,6 +63,10 @@ AstrBot 的所有下载都汇聚到一个函数：`astrbot.core.zip_updater._Rep
 ```
 
 然后在面板 → 插件管理里点「重载插件」或直接重启 AstrBot。
+
+### 方式三：插件市场
+
+市场收录正在走流程，**当前还搜不到**，请先用方式一或方式二。收录通过后，在面板 → 插件市场搜索 **下载加速器** 或 **Download Accelerator** 即可一键安装。
 
 安装后在日志里能看到这一行，说明接管成功：
 
