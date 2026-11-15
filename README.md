@@ -217,7 +217,8 @@ GET /api/plug/astrbot_plugin_dl_accel/status
 
 ## 兼容性
 
-- AstrBot `>= 4.16.0`
+- AstrBot `>= 4.27.0`（`_RepoZipUpdater._download_file` 从 v4.27.0 起才存在；更早的版本用的是
+  `RepoZipUpdator`，没有这个统一入口，插件会记录一行警告并自动跳过，不影响 AstrBot 本身运行）
 - Python 3.10+
 - 依赖：`httpx`（AstrBot 自带）；SOCKS5 需 `socksio`（可选）
 
