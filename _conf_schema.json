@@ -1,0 +1,56 @@
+{
+  "enabled": {
+    "type": "bool",
+    "description": "启用下载加速",
+    "hint": "关掉后立即恢复 AstrBot 原生下载行为。默认开启。",
+    "default": true
+  },
+  "proxy": {
+    "type": "string",
+    "description": "加速用代理地址",
+    "hint": "留空 = 自动（依次尝试 AstrBot 全局 HTTP 代理 → 环境变量 → 扫描本机常见端口 7890/7897/10809/10808 等）。只有自动探测不准时才需要手填，例：http://127.0.0.1:7890 或 socks5://127.0.0.1:7891。",
+    "default": ""
+  },
+  "auto_probe_proxy": {
+    "type": "bool",
+    "description": "自动探测本机代理",
+    "hint": "没配代理时，自动扫描本机常见代理端口并实测能否出网。没有代理软件的用户保持开启即可，探测失败会直接走直连，不会更慢。默认开启。",
+    "default": true
+  },
+  "mirror_prefix": {
+    "type": "string",
+    "description": "GitHub 反代前缀（可选）",
+    "hint": "形如 https://ghfast.top 或 https://gh-proxy.com。填了以后 GitHub 下载会额外尝试“前缀/原始地址”，国内环境往往比代理更快。只对 GitHub 域名生效。留空 = 不用。",
+    "default": ""
+  },
+  "parallel_parts": {
+    "type": "int",
+    "description": "分块并行数",
+    "hint": "同一个文件拆成几段同时下载。默认 8；网络差或代理限流可降到 4，带宽充裕可提到 16。",
+    "default": 8
+  },
+  "min_size_kb": {
+    "type": "int",
+    "description": "启用分块的最小文件大小（KB）",
+    "hint": "小于这个大小的文件直接单连接下载，省掉探测开销。默认 512。",
+    "default": 512
+  },
+  "cache_enabled": {
+    "type": "bool",
+    "description": "启用本地缓存",
+    "hint": "下载完成的包留在本地，重复安装/回滚直接命中缓存（毫秒级）。默认开启。",
+    "default": true
+  },
+  "cache_max_mb": {
+    "type": "int",
+    "description": "缓存上限（MB）",
+    "hint": "超过后按最久未使用自动清理。默认 2048（2GB）。",
+    "default": 2048
+  },
+  "allow_hosts": {
+    "type": "string",
+    "description": "允许接管的域名",
+    "hint": "逗号分隔。不在这份名单里的地址会走 AstrBot 原生下载，保证不会因为加速器出问题而装不上东西。一般不用改。",
+    "default": "astrbot-cloud-test-s3.astrbot.app, astrbot-plugins-s3.astrbot.app, github.com, codeload.github.com, api.github.com, objects.githubusercontent.com, raw.githubusercontent.com, release-assets.githubusercontent.com, github-releases.githubusercontent.com"
+  }
+}

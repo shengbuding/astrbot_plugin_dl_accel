@@ -1,0 +1,51 @@
+name: "astrbot_plugin_dl_accel"
+display_name: "下载加速器 (Download Accelerator)"
+author: "shengbuding"
+version: "v1.0.0"
+desc: "接管 AstrBot 的插件与核心下载：自动探测本机代理、HTTP Range 多路分块并行、本地磁盘缓存。装完不用改任何设置，插件安装/更新与 AstrBot 核心更新的下载速度就能明显变快；任何一步失败都会自动回退原生下载，绝不会让本来能装上的东西装不上。"
+short_desc: "插件/核心下载提速：自动代理 + 多路分块并行 + 本地缓存，失败自动回退原生"
+repo: "https://github.com/shengbuding/astrbot_plugin_dl_accel"
+homepage: "https://github.com/shengbuding/astrbot_plugin_dl_accel"
+license: "AGPL-3.0"
+astrbot_version: ">=4.16.0"
+tags:
+  - 下载加速
+  - 代理
+  - 缓存
+  - 插件市场
+  - 网络优化
+keywords:
+  - download
+  - accelerator
+  - proxy
+  - cache
+  - http-range
+  - 加速
+  - 多线程
+  - 断点
+features:
+  - 自动接管 AstrBot 统一下载函数，插件安装、插件更新、核心更新三条链路一起提速
+  - 自动探测本机代理（Clash / V2Ray / Mihomo 等常见端口），也能跟随 AstrBot 全局 HTTP 代理设置
+  - HTTP Range 多路分块并行下载，单连接被限速时可用多连接叠加带宽
+  - 支持 SOCKS5 代理（装了 httpx[socks] 时自动启用）
+  - 可选 GitHub 反向代理前缀，国内网络下往往比代理更快
+  - 本地磁盘缓存，同一个包重复安装毫秒级命中，自动按 LRU 限额清理
+  - 任意通道失败都回退原生实现，最坏情况与未安装插件完全一致
+  - 内置 /dlaccel diag 通道诊断，一眼看出该填什么代理
+help: |
+  /dlaccel             查看当前状态（是否接管、用了哪个通道、缓存占用）
+  /dlaccel diag        逐个通道实测连通性与延迟，排查该填什么代理
+  /dlaccel clear       清空本地下载缓存
+  /dlaccel prewarm N   预热插件市场下载量前 N 名的安装包（默认 50，最大 300）
+  /dlaccel off         临时关闭加速（不改配置，重启实例后恢复）
+  /dlaccel on          重新开启
+
+  除 status 外都需要 AstrBot 管理员权限。
+support_platforms:
+  - aiocqhttp
+  - qq_official
+  - telegram
+  - lark
+  - wecom
+  - dingtalk
+  - kook
